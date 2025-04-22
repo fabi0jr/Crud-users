@@ -1,18 +1,38 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { UserService } from './user.service';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { User } from './entities/user.entity';
 
-describe('UserService', () => {
-  let service: UserService;
+@Injectable()
+export class UserService {
+  constructor(
+    @InjectRepository(User)
+    private userRepository: Repository<User>,
+  ) {}
 
-  beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      providers: [UserService],
-    }).compile();
+  create(userData: Partial<User>) {
+    const user = this.userRepository.create(userData);
+    return this.userRepository.save(user);
+  }
 
-    service = module.get<UserService>(UserService);
-  });
+  findAll() {
+    return this.userRepository.find();
+  }
 
-  it('should be defined', () => {
-    expect(service).toBeDefined();
-  });
-});
+  async findOne(id: number) {
+    const user = await this.userRepository.findOneBy({ id });
+    if (!user) throw new NotFoundException('Usuário não encontrado');
+    return user;
+  }
+
+  async update(id: number, data: Partial<User>) {
+    const user = await this.findOne(id);
+    Object.assign(user, data);
+    return this.userRepository.save(user);
+  }
+
+  async remove(id: number) {
+    const user = await this.findOne(id);
+    return this.userRepository.remove(user);
+  }
+}

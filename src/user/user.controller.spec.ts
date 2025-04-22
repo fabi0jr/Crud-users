@@ -1,20 +1,33 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { UserController } from './user.controller';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { UserService } from './user.service';
+import { User } from './entities/user.entity';
 
-describe('UserController', () => {
-  let controller: UserController;
+@Controller('users')
+export class UserController {
+  constructor(private readonly userService: UserService) {}
 
-  beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      controllers: [UserController],
-      providers: [UserService],
-    }).compile();
+  @Post()
+  create(@Body() userData: Partial<User>) {
+    return this.userService.create(userData);
+  }
 
-    controller = module.get<UserController>(UserController);
-  });
+  @Get()
+  findAll() {
+    return this.userService.findAll();
+  }
 
-  it('should be defined', () => {
-    expect(controller).toBeDefined();
-  });
-});
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.userService.findOne(+id);
+  }
+
+  @Put(':id')
+  update(@Param('id') id: string, @Body() userData: Partial<User>) {
+    return this.userService.update(+id, userData);
+  }
+
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.userService.remove(+id);
+  }
+}
