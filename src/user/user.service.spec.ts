@@ -19,19 +19,19 @@ export class UserService {
     return this.userRepository.find();
   }
 
-  async findOne(id: number) {
+  async findOne(id: string) {
     const user = await this.userRepository.findOneBy({ id });
     if (!user) throw new NotFoundException('Usuário não encontrado');
     return user;
   }
 
-  async update(id: number, data: Partial<User>) {
+  async update(id: string, data: Partial<User>) {
     const user = await this.findOne(id);
     Object.assign(user, data);
     return this.userRepository.save(user);
   }
 
-  async remove(id: number) {
+  async remove(id: string) {
     const user = await this.findOne(id);
     return this.userRepository.remove(user);
   }
