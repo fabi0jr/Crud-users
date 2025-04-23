@@ -81,6 +81,7 @@ Disponível em: http://localhost:3000/swagger
 
 - **Nome**: Apenas letras
 - **Email**: Formato válido
+- **Matricula**: Apenas números 
 - **Senha**: Mínimo 6 caracteres alfanuméricos
 - Todos os campos são obrigatórios
 
