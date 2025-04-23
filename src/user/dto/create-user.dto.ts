@@ -1,9 +1,16 @@
-import {IsEmail, IsNotEmpty, IsString, Matches, MinLength,} from 'class-validator';
+import {IsEmail, 
+  IsNotEmpty, 
+  IsString, 
+  Matches, 
+  MinLength,
+} from 'class-validator';
 import { ApiProperty, OmitType } from '@nestjs/swagger';
 import { User } from '../entities/user.entity';
 
 export class CreateUserDto extends OmitType(User, [
-  'id','createdAt','updatedAt',]) 
+  'id',
+  'createdAt',
+  'updatedAt',]) 
   
   {
   @ApiProperty()
