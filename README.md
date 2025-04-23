@@ -90,6 +90,9 @@ Disponível em: http://localhost:3000/swagger
 src/
 ├── app.module.ts
 ├── main.ts
+├── common/
+│   └── dto/
+│       └──pagination-query.dto.ts
 ├── config/
 │   └── database/
 │       ├── database.module.ts
