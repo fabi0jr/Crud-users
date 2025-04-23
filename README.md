@@ -89,21 +89,22 @@ Disponível em: http://localhost:3000/swagger
 
 ```bash
 src/
-├── app.module.ts
-├── main.ts
-├── common/
-│   └── dto/
-│       └──pagination-query.dto.ts
-├── config/
+├── app.module.ts              # Módulo principal da aplicação
+├── main.ts                    # Ponto de entrada da aplicação
+├── common/                    # Utilitários comuns e DTOs
+│   ├── dto/
+│   │   └── pagination-query.dto.ts
+├── config/                    # Módulos de configuração
 │   └── database/
 │       ├── database.module.ts
 │       └── database-config.service.ts
-├── users/
-│   ├── dto/
-│   │   ├── create-user.dto.ts
-│   │   ├── update-user.dto.ts
-│   ├── entities/
-│   │   └── user.entity.ts
-│   ├── users.controller.ts
-│   ├── users.module.ts
-│   └── users.service.ts
+└── users/                     # Módulo de usuários
+    ├── dto/
+    │   ├── create-user.dto.ts
+    │   ├── update-user.dto.ts
+    │   └── search-user.dto.ts
+    ├── entities/
+    │   └── user.entity.ts
+    ├── users.controller.ts
+    ├── users.module.ts
+    └── users.service.ts
