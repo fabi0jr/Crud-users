@@ -89,16 +89,16 @@ Disponível em: http://localhost:3000/swagger
 
 ```bash
 src/
-├── app.module.ts              # Módulo principal da aplicação
-├── main.ts                    # Ponto de entrada da aplicação
-├── common/                    # Utilitários comuns e DTOs
+├── app.module.ts              
+├── main.ts                    
+├── common/                   
 │   ├── dto/
 │   │   └── pagination-query.dto.ts
-├── config/                    # Módulos de configuração
+├── config/                    
 │   └── database/
 │       ├── database.module.ts
 │       └── database-config.service.ts
-└── users/                     # Módulo de usuários
+└── users/                    
     ├── dto/
     │   ├── create-user.dto.ts
     │   ├── update-user.dto.ts
