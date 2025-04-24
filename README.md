@@ -45,7 +45,7 @@ Este projeto é uma API RESTful utilizando o framework NestJS, com foco em um CR
 ### 1. Clone o repositório
 
 ```bash
-gh repo clone fabi0jr/Crud-users
+git clone https://github.com/fabi0jr/Crud-users.git
 cd Crud-users
 ```
 
