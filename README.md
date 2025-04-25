@@ -52,6 +52,8 @@ cd Crud-users
 ### 2. Suba o banco de dados com Docker
 
 ```bash
+### IMPORTANTE: Certifique-se de que o Docker Desktop esteja instalado e em execução
+
 docker-compose up -d
 ```
 
